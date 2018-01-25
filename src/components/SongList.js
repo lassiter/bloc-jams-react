@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import { Table, Row, Col } from 'reactstrap';
+import SongItem from './SongItem'
 
 class SongList extends Component {
   constructor(props) {
   super(props);
+
   }
   render() {
-    return (
+        return (
         <Table id="song-list">
           <thead>
             <tr>
@@ -18,48 +20,21 @@ class SongList extends Component {
           </thead>
           <tbody>
           {this.props.album.songs.map((song, index) =>
+
               <SongItem
+                songIndex={index}
                 key={index}
-                song={this.props.album.song}
+                songNumber={index+1}
+                song = {song}
                 isPlaying={this.props.isPlaying}
-                currentSong={this.props.currentSong}
-                formatTime={(t) => this.formatTime(t)}
-                handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+                selected={this.props.currentSong === song}
+                formatTime={(t) => this.props.formatTime(t)}
+                handleSongClick={() => this.props.handleSongClick(song)}
               />
           )}
           </tbody>
         </Table>
     );
   }
-}
-
-function SongItem(props){
-  let index = null;
-  return (<button>{index + 1}</button>);
-}
-
-function SongNumber(props){
-  let index = null;
-  return (
-    <button>
-      <span className="song-number"> {index + 1}</span>
-    </button>
-  );
-}
-
-function IonPause(props){
-  return (
-    <button>
-      <span className="ion-pause"></span>
-    </button>
-  );
-}
-
-function IonPlay(props){
-  return (
-    <button>
-      <span className="ion-play"></span>
-    </button>
-  );
 }
 export default SongList;

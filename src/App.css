@@ -80,7 +80,7 @@ h2.artist {
   margin-right: auto;
 }
 
-/* tr {
+tr {
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
   background: hsla(0, 0%, 0%, 0.01);
   transition: all 0.2s ease;
@@ -167,4 +167,4 @@ tr.playing button:focus .ion-pause {
 .song-duration {
   color: hsla(0, 0%, 100%, 0.5);
   text-align: right;
-} */
+}

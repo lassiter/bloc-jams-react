@@ -69,6 +69,7 @@ class Album extends Component {
       if (this.state.isPlaying && isSameSong) {
         this.pause();
       } else {
+
         if (!isSameSong) { this.setSong(song); }
         this.play();
       }
@@ -125,7 +126,7 @@ class Album extends Component {
            isPlaying={this.state.isPlaying}
            currentSong={this.state.currentSong}
            formatTime={(t) => this.formatTime(t)}
-           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+           handleSongClick={(song) => this.handleSongClick(song)}
           />
          <PlayerBar
           isPlaying={this.state.isPlaying}

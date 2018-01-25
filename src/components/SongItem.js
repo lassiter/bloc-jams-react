@@ -15,55 +15,60 @@ class SongItem extends Component {
         isHovered: !this.state.isHovered
     });
   }
- // song-number, ion-play, ion-pause
   render() {
+
     let isHovered = this.state.isHovered;
     let isPlaying = this.props.isPlaying;
     let currentSong = this.props.currentSong;
+    let isSelected = this.props.selected;
 
-    // let button = null;
-    // if (isHovered && !isPlaying) {
-    //   button = <IonPlay />;
-    // }
-    // else if (isPlaying) {
-    //   button = <IonPause />;
-    // } else { button = <SongNumber />;}
+    let song = null;
+    let button = null;
+    if (isHovered && !isPlaying && !isSelected || isHovered && isPlaying && !isSelected || isHovered && !isPlaying && isSelected) {
+      button = <IonPlay />;
+    }
+    else if (isPlaying && this.props.selected) {
+      button = <IonPause />;
+    } else { button = <SongNumber songNumber = {this.props.songNumber}/>;}
+              console.log(this.props)
     return (
-            <tr className="song" key={index} onClick={() => this.props.handleSongClick(song)}>
-              <td>
-                {this.song.index}
-              </td>
-              <td>{this.song.title}</td>
-              <td>{this.props.formatTime(song.duration)}</td>
-            </tr>
+        <tr className="song" key={this.props.songIndex} onClick={() => this.props.handleSongClick()}>
+          <td onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
+            {button}
+          </td>
+          <td>{this.props.song.title}</td>
+          <td>{this.props.formatTime(this.props.song.duration)}</td>
+        </tr>
     );
   }
 }
-//
-// function SongNumber(props){
-//   let index = null;
-//   return (
-//     <td>
-//     <button>
-//       <span className="song-number"> {index + 1}</span>
-//     </button>
-//   </td>
-//   );
-// }
-//
-// function IonPause(props){
-//   return (
-//     <button>
-//       <span className="ion-pause"></span>
-//     </button>
-//   );
-// }
-//
-// function IonPlay(props){
-//   return (
-//     <button>
-//       <span className="ion-play"></span>
-//     </button>
-//   );
-// }
+
+class SongNumber extends Component {
+  constructor(props) {
+  super(props);
+  }
+  render() {
+  return (
+      <button>
+        <span className="song-number"> {this.props.songNumber}</span>
+      </button>
+    );
+  }
+}
+
+function IonPause(props){
+  return (
+    <button>
+      <span className="ion-pause"></span>
+    </button>
+  );
+}
+
+function IonPlay(props){
+  return (
+    <button>
+      <span className="ion-play"></span>
+    </button>
+  );
+}
 export default SongItem;
