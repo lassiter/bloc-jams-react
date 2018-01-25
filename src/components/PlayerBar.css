@@ -1,0 +1,87 @@
+.player-bar {
+  background: hsla(0, 0%, 0%, 0.1);
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  position: fixed;
+}
+#time-control {
+  margin: 0.5rem auto;
+  /* max-width: 640px; */
+  width: 80%;
+}
+#volume-control {
+  margin: 0.5rem auto;
+  float:right;
+  width: 15%;
+}
+
+#time-control input {
+  float: left;
+  width: calc(100% - 80px);
+}
+
+#time-control div,
+#volume-control div {
+  font-size: 0.8rem;
+  color: hsla(0, 0%, 0%, 0.4);
+  width: 35px;
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+#volume-control div {
+  font-size: 0.9rem;
+  width: 20px;
+}
+
+#volume-control input {
+  float: left;
+  width: calc(100% - 40px);
+}
+
+#buttons {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+#buttons button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1.2rem;
+  color: hsla(0, 0%, 100%, 0.5);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#buttons button:hover, #buttons button:focus {
+  outline: none;
+  color: hsla(0, 0%, 100%, 1);
+  text-shadow: 2px 4px 3px hsla(0,0%,0%,0.25);
+}
+
+#buttons #play-pause {
+  color: hsla(0, 0%, 100%, 0.8);
+  font-size: 2rem;
+  margin: 0.5rem 1rem 0;
+  transform: translateY(0.3rem);
+}
+
+#buttons #play-pause:hover {
+  color: hsla(0, 0%, 100%, 1);
+}
+
+#play-pause .ion-pause {
+  display: none;
+}
+
+#play-pause[playState="playing"] .ion-pause {
+  display: block;
+}
+
+#play-pause[playState="playing"] .ion-play {
+  display: none;
+}

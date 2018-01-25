@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import SongList from './SongList';
 import PlayerBar from './PlayerBar';
+import { Table, Row, Col } from 'reactstrap';
 
 class Album extends Component {
   constructor(props) {
@@ -110,36 +112,21 @@ class Album extends Component {
   render() {
     return (
       <section className="album">
-        <section id="album-info">
-        <img id="album-cover-art" src={this.state.album.albumCover} />
-        <div className="album-details">
-          <h1 id="album-title">{this.state.album.title}</h1>
-          <h2 className="artist">{this.state.album.artist}</h2>
-          <div id="release-info">{this.state.album.releaseInfo}</div>
-        </div>
-        </section>
-        <table id="song-list">
-         <colgroup>
-           <col id="song-number-column" />
-           <col id="song-title-column" />
-           <col id="song-duration-column" />
-          </colgroup>
-          <tbody>
-          {this.state.album.songs.map((song, index) =>
-            <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
-              <td>
-                <button>
-                  <span className="song-number">{index + 1}</span>
-                  <span className="ion-play"></span>
-                  <span className="ion-pause"></span>
-                </button>
-              </td>
-              <td>{song.title}</td>
-              <td>{this.formatTime(song.duration)}</td>
-            </tr>
-          )}
-          </tbody>
-         </table>
+        <Row tag="section" id="album-info">
+          <Col xs="6" tag="img" id="album-cover-art" src={this.state.album.albumCover} />
+          <Col xs="6" className="album-details">
+            <h1 id="album-title">{this.state.album.title}</h1>
+            <h2 className="artist">{this.state.album.artist}</h2>
+            <div id="release-info">{this.state.album.releaseInfo}</div>
+          </Col>
+        </Row>
+          <SongList
+           album={this.state.album}
+           isPlaying={this.state.isPlaying}
+           currentSong={this.state.currentSong}
+           formatTime={(t) => this.formatTime(t)}
+           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+          />
          <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
