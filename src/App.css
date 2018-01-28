@@ -74,7 +74,8 @@ h2.artist {
   opacity: 0.5;
   font-size: 0.8rem;
 }
-.album {
+.album,
+.library {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -94,16 +95,6 @@ tr:hover .ion-play,
 tr.playing .ion-pause,
 tr.paused .ion-play {
   display: block;
-}
-
-tr .ion-play,
-tr .ion-pause,
-tr:hover .song-number,
-tr.playing .ion-play,
-tr.playing .song-number,
-tr.paused .ion-pause,
-tr.paused .song-number {
-  display: none;
 }
 
 tr:hover {
@@ -167,4 +158,8 @@ tr.playing button:focus .ion-pause {
 .song-duration {
   color: hsla(0, 0%, 100%, 0.5);
   text-align: right;
+}
+section.library > a > div, section.library > a:hover {
+  color: hsla(0, 0%, 100%, 0.9);
+  text-decoration: none;
 }

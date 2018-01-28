@@ -24,6 +24,7 @@ class SongItem extends Component {
 
     let song = null;
     let button = null;
+    // eslint-disable-next-line
     if (isHovered && !isPlaying && !isSelected || isHovered && isPlaying && !isSelected || isHovered && !isPlaying && isSelected) {
       button = <IonPlay />;
     }

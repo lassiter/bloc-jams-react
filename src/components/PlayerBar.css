@@ -1,7 +1,7 @@
 .player-bar {
   background: hsla(0, 0%, 0%, 0.1);
   bottom: 0;
-  left: 0;
+  left
   height: 100px;
   position: fixed;
 }
@@ -74,14 +74,15 @@
   color: hsla(0, 0%, 100%, 1);
 }
 
-#play-pause .ion-pause {
-  display: none;
-}
-
-#play-pause[playState="playing"] .ion-pause {
+#play-pause .ion-pause,
+#play-pause .ion-play {
   display: block;
 }
 
 #play-pause[playState="playing"] .ion-play {
   display: none;
+}
+.library .row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
